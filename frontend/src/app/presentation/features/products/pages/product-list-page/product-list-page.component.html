@@ -1,0 +1,128 @@
+<div class="page">
+  <header class="header">
+    <div class="logo">BANCO PICHINCHA</div>
+  </header>
+
+  <main class="content-wrapper">
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        (input)="onSearch($event)"
+      >
+      <button class="btn-add" (click)="goToCreate()">Agregar</button>
+    </div>
+
+    <!-- Main Table Card -->
+    <div class="table-container">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre del producto</th>
+              <th>
+                Descripción 
+                <span class="info-icon" title="Cualquier información adicional sobre el producto">ⓘ</span>
+              </th>
+              <th>Fecha de liberación</th>
+              <th>Fecha de reestructuración</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Skeleton Loader State (Superior UX) -->
+            <ng-container *ngIf="loading()">
+              <tr *ngFor="let i of [1,2,3,4,5]">
+                <td><app-skeleton width="44px" height="44px" borderRadius="14px"></app-skeleton></td>
+                <td><app-skeleton width="140px" height="18px"></app-skeleton></td>
+                <td><app-skeleton width="200px" height="16px"></app-skeleton></td>
+                <td><app-skeleton width="100px" height="16px"></app-skeleton></td>
+                <td><app-skeleton width="100px" height="16px"></app-skeleton></td>
+                <td><app-skeleton width="30px" height="30px" borderRadius="10px"></app-skeleton></td>
+              </tr>
+            </ng-container>
+
+            <!-- Real Data State (Optimized with trackBy) -->
+            <ng-container *ngIf="!loading()">
+              <tr *ngFor="let product of paginatedProducts(); trackBy: trackById">
+                <td>
+                  <div class="logo-circle">
+                    <img 
+                      [src]="product.logo" 
+                      [alt]="product.name"
+                      class="logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="logo-initials" style="display: none;">
+                      {{ product.name | slice:0:2 }}
+                    </div>
+                  </div>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.dateRelease | date:'dd/MM/yyyy' }}</td>
+                <td>{{ product.dateRevision | date:'dd/MM/yyyy' }}</td>
+                <td class="dropdown-container" (click)="$event.stopPropagation()">
+                  <button class="menu-btn" (click)="toggleMenu(product.id)">
+                    ⋮
+                  </button>
+                  <div *ngIf="openMenuId() === product.id" class="dropdown-menu">
+                    <button class="dropdown-item" (click)="goToEdit(product)">Editar</button>
+                    <button class="dropdown-item delete-item" (click)="openDeleteModal(product)">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Empty State (No Search Results) -->
+              <tr *ngIf="filteredProducts().length === 0">
+                <td colspan="6" class="no-results">
+                  No se encontraron productos disponibles.
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer / Pagination -->
+      <footer class="footer">
+        <div class="results-count">{{ totalItems() }} Resultados</div>
+        
+        <div class="pagination-controls" *ngIf="totalItems() > 0">
+           <button class="page-btn" (click)="prevPage()" [disabled]="currentPage() === 0">
+             &lt; <span>Anterior</span>
+           </button>
+           <span class="page-info">
+             Página <strong>{{ currentPage() + 1 }}</strong> de <strong>{{ totalPages() }}</strong>
+           </span>
+           <button class="page-btn" (click)="nextPage()" [disabled]="(currentPage() + 1) >= totalPages()">
+             <span>Siguiente</span> &gt;
+           </button>
+        </div>
+
+        <div class="page-size-selector">
+          <select [value]="pageSize()" (change)="onPageSizeChange($event)">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Confirm Delete Modal (Premium styled) -->
+  <div *ngIf="showModal()" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar el producto <strong>{{ productToDelete()?.name }}</strong>?</p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="cancelDelete()">Cancelar</button>
+        <button class="btn-confirm" (click)="confirmDelete()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
