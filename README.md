@@ -1,14 +1,14 @@
-# 📁 Financial Product Management - FullStack Monorepro
+# Financial Product Management - FullStack Monorepro
 
 Este repositorio centraliza el desarrollo del sistema de gestión de productos financieros, integrando tanto el **Frontend** como el **Backend** en una estructura de monorepositorio organizada y profesional.
 
 ---
 
-## 🏛 Estructura del Proyecto
+## Estructura del Proyecto
 
 El proyecto se divide en dos módulos principales:
 
-### 🎨 [Frontend (Angular)](./frontend/)
+### [Frontend (Angular)](./frontend/)
 Interfaz de usuario moderna construida con Angular v21.2.0, enfocada en la experiencia de usuario y la integridad de los datos.
 *   **Tecnologías:** Angular, Signals, RxJS, Vitest, SCSS.
 *   **Arquitectura:** Clean Architecture (Domain, Application, Infrastructure, Presentation).
@@ -21,7 +21,7 @@ API robusta para la gestión persistente del catálogo de productos financieros.
 
 ---
 
-## 🚀 Guía de Inicio Rápido
+## Guía de Inicio Rápido
 
 ### Clonar el Repositorio
 ```bash
@@ -48,8 +48,8 @@ Para una visualización completa, se recomienda ejecutar ambos servicios simult�
 
 ---
 
-## 🧪 Calidad y Pruebas
+## Calidad y Pruebas
 Ambos módulos cuentan con su propia suite de pruebas. Por favor, consulte los README específicos en cada carpeta para más detalles sobre cómo ejecutar los tests unitarios y de integración.
 
 ---
-*Desarrollador: Sebastian Minaya - 2026*
+*Desarrollador: Sebastian Omar Joaquin Minaya - 2026*
