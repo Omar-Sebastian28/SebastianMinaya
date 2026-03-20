@@ -14,7 +14,7 @@ Interfaz de usuario moderna construida con Angular v21.2.0, enfocada en la exper
 *   **Arquitectura:** Clean Architecture (Domain, Application, Infrastructure, Presentation).
 *   **[Ver documentación detallada](./frontend/README.md)**
 
-### ⚙️ [Backend (Node.js/Express)](./backend/)
+### [Backend (Node.js/Express)](./backend/)
 API robusta para la gestión persistente del catálogo de productos financieros.
 *   **Tecnologías:** Node.js, Express, TypeScript.
 *   **Funcionalidad:** Gestión CRUD de productos financieros.

@@ -45,7 +45,7 @@ graph LR
 
 ---
 
-## 🛠 Stack Tecnológico
+## Stack Tecnológico
 - **Angular (v21.2.0)**: Framework principal para aplicaciones robustas.
 - **TypeScript (Strict Mode)**: Seguridad de tipos en tiempo de compilación.
 - **Signals & RxJS**: Reactividad de vanguardia para gestión de estado y flujos asíncronos.
