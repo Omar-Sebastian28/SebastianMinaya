@@ -148,5 +148,5 @@ El proyecto utiliza **Vitest** por su velocidad y compatibilidad con Angular Sig
 ---
 
 ## Conclusión
-Este proyecto representa un enfoque de **Ingeniería de Software Senior**, donde la mantenibilidad y la robustez técnica prevalecen sobre el desarrollo rápido e incremental. La arquitectura está lista para escalado horizontal y cambios de infraestructura con mínima fricción.
+Este proyecto representa un enfoque de **Ingeniería de Software Senior**, donde la mantenibilidad y la robustez técnica prevalecen sobre el desarrollo rápido e incremental. Soy consciente de que, para el alcance actual de una sola entidad, este diseño puede considerarse **sobreingeniería** desde una perspectiva pragmática; sin embargo, se ha implementado así para demostrar un estándar arquitectónico capaz de soportar el crecimiento horizontal y cambios de infraestructura con mínima fricción en entornos empresariales complejos.
 
